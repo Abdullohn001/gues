@@ -5,6 +5,7 @@ commonNumberEl = document.getElementById("commonNumber"),
   keyNumberEl = document.getElementById("keyNumber"),
   wrapperEl = document.getElementById("wrapper"),
   recordEl = document.getElementById("record");
+  againEl = document.getElementById("again");
 
 let rendomNumber = Math.floor(Math.random() * 20) + 1;
 let attamps = 15;
@@ -40,6 +41,7 @@ let checkNumber = () => {
   }
   inputEl.value = "";
 };
+
 
 const refresh = () => {
   let newRendomNumber = Math.floor(Math.random() * 20) + 1;
