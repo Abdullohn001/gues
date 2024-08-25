@@ -1,36 +1,42 @@
-commonNumberEl = document.getElementById("commonNumber"),
-  inputEl = document.getElementById("input"),
-  checkEl = document.getElementById("check"),
-  atempEl = document.getElementById("atemp"),
-  keyNumberEl = document.getElementById("keyNumber"),
-  wrapperEl = document.getElementById("wrapper"),
-  recordEl = document.getElementById("record");
-  againEl = document.getElementById("again");
+(commonNumberEl = document.getElementById("commonNumber")),
+  (inputEl = document.getElementById("input")),
+  (checkEl = document.getElementById("check")),
+  (atempEl = document.getElementById("atemp")),
+  (keyNumberEl = document.getElementById("keyNumber")),
+  (wrapperEl = document.getElementById("wrapper")),
+  (recordEl = document.getElementById("record"));
+againEl = document.getElementById("again");
 
 let rendomNumber = Math.floor(Math.random() * 20) + 1;
 let attamps = 15;
 let record = 0;
 let checkNumber = () => {
   let inputVal = inputEl.value;
-  if (inputVal == rendomNumber) {
-    keyNumberEl.textContent = "You are Winer! ";
-    commonNumberEl.textContent = rendomNumber;
-    inputEl.disabled = true;
-    commonNumberEl.classList.add("bg-green-300");
-    wrapperEl.classList.add("bg-green-200");
-    checkEl.disabled = true;
-    if (record < attamps) {
-      record = attamps;
-      recordEl.textContent = attamps;
+
+  if (inputVal) {
+    inputEl.classList.remove("bg-red-200");
+    if (inputVal == rendomNumber) {
+      keyNumberEl.textContent = "You are Winer! ";
+      commonNumberEl.textContent = rendomNumber;
+      inputEl.disabled = true;
+      commonNumberEl.classList.add("bg-green-300");
+      wrapperEl.classList.add("bg-green-200");
+      checkEl.disabled = true;
+      if (record < attamps) {
+        record = attamps;
+        recordEl.textContent = attamps;
+      }
+    } else if (inputVal < rendomNumber) {
+      keyNumberEl.textContent = "Too low.";
+      attamps--;
+      atempEl.textContent = attamps;
+    } else if (inputVal > rendomNumber) {
+      keyNumberEl.textContent = "Too high.";
+      attamps--;
+      atempEl.textContent = attamps;
     }
-  } else if (inputVal < rendomNumber) {
-    keyNumberEl.textContent = "Too low.";
-    attamps--;
-    atempEl.textContent = attamps;
-  } else if (inputVal > rendomNumber) {
-    keyNumberEl.textContent = "Too high.";
-    attamps--;
-    atempEl.textContent = attamps;
+  } else {
+    inputEl.classList.add("bg-red-200");
   }
   if (attamps == 0) {
     keyNumberEl.textContent = "You are loser.😒";
@@ -41,7 +47,6 @@ let checkNumber = () => {
   }
   inputEl.value = "";
 };
-
 
 const refresh = () => {
   let newRendomNumber = Math.floor(Math.random() * 20) + 1;
